@@ -86,12 +86,8 @@ class AGRU4REC(nn.Module):
             nn.BatchNorm1d(512),
             nn.ReLU(),
             nn.Dropout(0.5))
-        # 1 x 512 
-        #self.fc = nn.Linear(512, 50)
-        self.fc = nn.Linear(512, 200)
-        self.activation = nn.Sigmoid()
 
-        self.fc = nn.Linear(512, 200)
+        self.activation = nn.Sigmoid()
         self.gru = nn.GRU(512, self.hidden_size, self.num_layers, dropout=self.dropout_hidden)
         self = self.to(self.device)
 
@@ -133,6 +129,7 @@ class AGRU4REC(nn.Module):
         out = self.conv8(out)
         out = self.conv9(out)
         out = self.conv10(out)
+        out = self.conv11(out)
 
         out = out.view(x.shape[0], out.size(1) * out.size(2))
 
