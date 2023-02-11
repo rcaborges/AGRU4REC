@@ -166,7 +166,7 @@ def main():
             optim = checkpoint["optim"]
             loss_function = lib.LossFunction(loss_type=loss_type, use_cuda=args.cuda)
             evaluation = lib.Evaluation(model, loss_function, item_mapper, args.audio_dir, use_cuda=args.cuda)
-            loss, recall, mrr = evaluation.eval(test_data, 100)
+            loss, recall, mrr = evaluation.eval(test_data, batch_size, 'test', 100)
             print("Final result: recall = {:.2f}, mrr = {:.2f}".format(recall, mrr))
         else:
             print("Pre trained model is None!")

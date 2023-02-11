@@ -37,7 +37,7 @@ class Trainer(object):
             st = time.time()
             train_loss = self.train_epoch(epoch)
 
-            loss, recall, mrr = self.evaluation.eval(self.eval_data, k=100)
+            loss, recall, mrr = self.evaluation.eval(self.eval_data, self.batch_size, 'val', k=100)
             loss_lst.append(loss)
             recall_lst.append(recall)
             mrr_lst.append(mrr)
