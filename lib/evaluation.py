@@ -12,14 +12,13 @@ class Evaluation(object):
         self.item_mapper = item_mapper
         self.audio_dir = audio_dir
 
-    def eval(self, eval_data, k):
+    def eval(self, eval_data, batch_size, label, k):
         self.model.eval()
         losses = []
         recalls = []
         mrrs = []
         result = []
-        #TODO
-        dataloader = lib.DataLoader(eval_data, self.item_mapper, self.audio_dir, batch_size=100)
+        dataloader = lib.DataLoader(eval_data, self.item_mapper, self.audio_dir, batch_size=batch_size)
         with torch.no_grad():
             hidden = self.model.init_hidden()
             for input, target, mask in dataloader:
@@ -46,6 +45,6 @@ class Evaluation(object):
         mean_losses = np.mean(losses)
         mean_recall = np.mean(recalls)
         mean_mrr = np.mean(mrrs)
-        pd.DataFrame(result).to_csv("result_rec.csv", index=False)
+        if label == 'test': pd.DataFrame(result).to_csv("result_rec.csv", index=False)
 
         return mean_losses, mean_recall, mean_mrr
