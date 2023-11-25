@@ -14,8 +14,6 @@ The code is based on [GRU4REC-PyTorch](https://github.com/hungthanhpham94/GRU4RE
   booktitle={2023 31st European Signal Processing Conference (EUSIPCO)}, 
   title={Audio-Based Sequential Music Recommendation}, 
   year={2023},
-  volume={},
-  number={},
   pages={421-425},
   doi={10.23919/EUSIPCO58844.2023.10290094}}
 ```
